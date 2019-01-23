@@ -7,7 +7,26 @@ import { catchError } from 'rxjs/operators';
 import { environment } from './../environments/environment';
 
 
+export interface Movie {
+  Title: string,
+  Year: string,
+  imdbID: string,
+  Poster: string /* a url to the jpg image */
+}
 
+export interface SearchResult {
+  Search: Array<Movie>,
+  totalResults: string,
+  Response: string
+}
+export interface MovieFull {
+  Title: string,
+  Year: string,
+  imdbID: string,
+  Poster: string,
+  Plot: string,
+  Metascore: string
+}
 
 @Injectable()
 export class ApiService {
@@ -18,12 +37,17 @@ export class ApiService {
   }
 
   searchMovie( title: string, type:string ):Observable<Object> {
-    
     return this.http.get<string>( this.url + "&s="+title )
     .pipe(
       catchError(this.handleError)
     );
+  }
 
+  getMovie( id: string,  ):Observable<Object> {
+    return this.http.get<string>( this.url + "&i="+id )
+    .pipe(
+      catchError(this.handleError)
+    );
   }
 
 

@@ -1,18 +1,5 @@
-import { ApiService } from './../api.service';
 import { Component, OnInit } from '@angular/core';
-
-interface Movie {
-  Title: string,
-  Year: string,
-  imdbID: string,
-  Poster: string /* a url to the jpg image */
-}
-
-interface SearchResult {
-  Search: Array<Movie>,
-  totalResults: string,
-  Response: string
-}
+import { ApiService, Movie, SearchResult } from './../api.service';
 
 @Component({
   selector: 'search',
