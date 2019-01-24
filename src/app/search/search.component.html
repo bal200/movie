@@ -2,11 +2,26 @@
 
   <div class="input-group my-3">
     <input type="text" class="form-control" placeholder="Search a Movie or Series title..." 
-        [(ngModel)]="searchTitle" aria-label="Search Movie Title" aria-describedby="search-button">
+        [(ngModel)]="searchTitle" aria-label="Search Movie Title" 
+        (keyup.enter)="searchPress()" aria-describedby="search-button">
     <div class="input-group-append">
       <button class="btn btn-outline-secondary" (click)="searchPress()" type="button" id="search-button">
         Search
       </button>
+    </div>
+  </div>
+  <div class="input-group">
+    <div class="custom-control custom-radio">
+      <input type="radio" value="movie" [(ngModel)]="type" id="customRadio1" name="customRadio" class="custom-control-input">
+      <label class="custom-control-label" for="customRadio1">Movies</label>
+    </div>
+    <div class="custom-control custom-radio">
+      <input type="radio" value="series" [(ngModel)]="type" id="customRadio2" name="customRadio" class="custom-control-input">
+      <label class="custom-control-label" for="customRadio2">Series</label>
+    </div>
+    <div class="custom-control custom-radio">
+      <input type="radio" value="all" [(ngModel)]="type" id="customRadio3" name="customRadio" class="custom-control-input">
+      <label class="custom-control-label" for="customRadio3">All</label>
     </div>
   </div>
 

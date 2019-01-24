@@ -10,6 +10,7 @@ export class SearchComponent implements OnInit {
 
   loading = false;
   searchTitle :string;
+  type :string = 'all';
   errorMessage="";
   results : Array<Movie>;
 
@@ -22,7 +23,7 @@ export class SearchComponent implements OnInit {
   searchPress() {
     this.loading=true;
     /** Make the call to the Movies API **/
-    this.api.searchMovie( this.searchTitle, "" ).subscribe( 
+    this.api.searchMovie( this.searchTitle, this.type ).subscribe( 
       (res:SearchResult) => {
         this.results = res.Search;
         this.loading=false;

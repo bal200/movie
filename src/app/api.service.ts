@@ -37,7 +37,10 @@ export class ApiService {
   }
 
   searchMovie( title: string, type:string ):Observable<Object> {
-    return this.http.get<string>( this.url + "&s="+title )
+    let typeStr="";
+    if (type=="movie") typeStr="&type=movie";
+    if (type=="series") typeStr="&type=series";
+    return this.http.get<string>( this.url + typeStr + "&s="+title )
     .pipe(
       catchError(this.handleError)
     );
