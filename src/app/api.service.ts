@@ -36,17 +36,19 @@ export class ApiService {
     this.url = environment.omdb.url + "?apikey="+environment.omdb.apiKey;
   }
 
-  searchMovie( title: string, type:string ):Observable<Object> {
+  searchMovie( title: string, type:string, page?:number ):Observable<Object> {
     let typeStr="";
     if (type=="movie") typeStr="&type=movie";
     if (type=="series") typeStr="&type=series";
-    return this.http.get<string>( this.url + typeStr + "&s="+title )
+    let pageStr="";
+    if (page) pageStr = "&page="+page;
+    return this.http.get<string>( this.url + typeStr + pageStr + "&s="+title )
     .pipe(
       catchError(this.handleError)
     );
   }
 
-  getMovie( id: string,  ):Observable<Object> {
+  getMovie( id: string ):Observable<Object> {
     return this.http.get<string>( this.url + "&i="+id )
     .pipe(
       catchError(this.handleError)

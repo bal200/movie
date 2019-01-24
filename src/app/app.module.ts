@@ -10,13 +10,15 @@ import { SearchComponent } from './search/search.component';
 import { MovieComponent } from './movie/movie.component';
 
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { SeriesComponent } from './series/series.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     SearchComponent,
-    MovieComponent
+    MovieComponent,
+    SeriesComponent
   ],
   imports: [
     BrowserModule,

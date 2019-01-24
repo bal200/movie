@@ -10,7 +10,7 @@
       </button>
     </div>
   </div>
-  <div class="input-group">
+  <div class="input-group my-3">
     <div class="custom-control custom-radio">
       <input type="radio" value="movie" [(ngModel)]="type" id="customRadio1" name="customRadio" class="custom-control-input">
       <label class="custom-control-label" for="customRadio1">Movies</label>
@@ -30,18 +30,31 @@
   </div>
   <div *ngIf="errorMessage" class="alert alert-danger" role="alert">{{errorMessage}}</div>
 
-  <div *ngIf="results" class="list-group">
-    <a [routerLink]="['/movie', result.imdbID]" class="list-group-item list-group-item-action flex-column align-items-start"
-          *ngFor="let result of results">
-      <div class="d-flex w-100 justify-content-between">
-        <h5 class="mb-1">{{result.Title}}</h5>
-        <small>{{result.Type}}</small>
-      </div>
-      <p class="mb-1"></p>
-      <small>{{result.Year}}</small>
-    </a>
-  </div>
+  <div *ngIf="results">
+    <div class="list-group">
+      <a [routerLink]="['/movie', result.imdbID]" class="list-group-item list-group-item-action flex-column align-items-start"
+            *ngFor="let result of results">
+        <div class="d-flex w-100 justify-content-between">
+          <h5 class="mb-1">{{result.Title}}</h5>
+          <small>{{result.Type}}</small>
+        </div>
+        <p class="mb-1"></p>
+        <small>{{result.Year}}</small>
+      </a>
+    </div>
 
+    <ul class="pagination my-3">
+      <li class="page-item" [class.disabled]="!showPrev">
+        <a class="page-link" (click)="prevPage()">Previous</a>
+      </li>
+      <li class="page-item active" aria-current="page">
+        <a class="page-link">{{page}}</a>
+      </li>
+      <li class="page-item" [class.disabled]="!showNext">
+        <a class="page-link" (click)="nextPage()">Next</a>
+      </li>
+    </ul>
+  </div>
   <div class="p-4"></div>
 
 </div>
