@@ -32,7 +32,7 @@
 
   <div *ngIf="results">
     <div class="list-group">
-      <a [routerLink]="['/movie', result.imdbID]" class="list-group-item list-group-item-action flex-column align-items-start"
+      <a [routerLink]="[result.Type, result.imdbID]" class="list-group-item list-group-item-action flex-column align-items-start"
             *ngFor="let result of results">
         <div class="d-flex w-100 justify-content-between">
           <h5 class="mb-1">{{result.Title}}</h5>

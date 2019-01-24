@@ -1,3 +1,43 @@
-<p>
-  series works!
-</p>
+<div class="container">
+    <div *ngIf="loading" class="d-flex justify-content-center">
+      <div class="spinner-border text-success"><span class="sr-only">Loading...</span></div>
+    </div>
+    <div *ngIf="errorMessage" class="alert alert-danger" role="alert">{{errorMessage}}</div>
+  
+
+    <div *ngIf="movie" class="card my-3 bg-light" >
+      <div class="card-header">TV Series</div>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-md-5">
+            <img src="{{movie.Poster}}" class="img-fluid" alt="">
+          </div>
+          <div class="col-md-7">
+            <h4 class="card-title">{{movie.Title}}</h4>
+            <h6 class="card-text">{{movie.Year}}</h6>
+            <p class="card-text"><small class="text-muted">Director: {{movie.Director}}</small></p>
+            <p class="card-text">{{movie.Plot}}</p>
+            <p class="card-text">Staring {{movie.Actors}}</p>
+            <p class="card-text">Written by {{movie.Writer}}</p>
+            
+            <p class="card-text">Imdb rating: {{movie.imdbRating}}</p>
+
+            <p class="card-text">Number of Seasons: {{movie.totalSeasons}}</p>
+
+          </div>
+        </div>
+
+        
+      </div>
+      <div class="card-footer text-muted">
+        {{movie.Genre}}
+      </div>
+
+    </div>
+      
+
+
+
+    <div class="p-4"></div>
+  
+  </div>
